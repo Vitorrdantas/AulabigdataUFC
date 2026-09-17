@@ -1,0 +1,7 @@
+merchant_category,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+viagem,3010,10.0,160,21.3,5.32,2.12,25966.4
+saude,2951,9.8,73,9.7,2.47,0.99,11141.53
+alimentacao,5976,19.9,138,18.4,2.31,0.92,21017.0
+varejo,9047,30.2,203,27.0,2.24,0.9,34870.54
+servicos,4576,15.3,90,12.0,1.97,0.79,14197.18
+eletronico,4440,14.8,87,11.6,1.96,0.78,12175.28

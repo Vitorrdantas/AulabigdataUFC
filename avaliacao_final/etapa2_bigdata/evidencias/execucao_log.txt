@@ -1,0 +1,136 @@
+==============================================================================
+PIPELINE TECHPAY — Rota B (DuckDB 1.5.5)
+==============================================================================
+
+[1] INGESTÃO
+origem : /tmp/avaliacao_transactions.csv  (2,742,011 bytes)
+destino: bigdata_aval/raw/transactions/avaliacao_transactions.csv
+MD5 origem = ece8d0a5e16697ed7cb271e8f8178622 | MD5 destino = ece8d0a5e16697ed7cb271e8f8178622 | íntegro = True
+linhas de dados no arquivo (sem cabeçalho): 30,000
+
+[2] TABELA RAW (schema explícito)
+
+-- schema da raw
+      column_name column_type null  key default extra
+   transaction_id     INTEGER  YES None    None  None
+      customer_id     INTEGER  YES None    None  None
+           amount      DOUBLE  YES None    None  None
+ transaction_type     VARCHAR  YES None    None  None
+          channel     VARCHAR  YES None    None  None
+merchant_category     VARCHAR  YES None    None  None
+        timestamp   TIMESTAMP  YES None    None  None
+           status     VARCHAR  YES None    None  None
+       risk_score      DOUBLE  YES None    None  None
+          segment     VARCHAR  YES None    None  None
+     credit_score     INTEGER  YES None    None  None
+         is_fraud     VARCHAR  YES None    None  None
+
+linhas carregadas na raw: 30,000 | linhas rejeitadas pelo schema: 0
+
+-- valores textuais de is_fraud na origem
+is_fraud     n
+   False 29249
+    True   751
+
+[3] PARTICIONAMENTO (year / month)
+
+-- linhas por partição
+ year  month  linhas
+ 2025      1    2625
+ 2025      2    2317
+ 2025      3    2511
+ 2025      4    2458
+ 2025      5    2499
+ 2025      6    2525
+ 2025      7    2530
+ 2025      8    2472
+ 2025      9    2451
+ 2025     10    2585
+ 2025     11    2451
+ 2025     12    2576
+
+12 pastas de partição criadas, ex.: raw_particionada/transactions/year=2025/month=1 ... raw_particionada/transactions/year=2025/month=12
+plano (trecho) do filtro month=3: File Filters: | Scanning Files: 1/12
+
+[4] BRONZE (limpeza)
+reprovações por regra (uma linha pode cair em mais de uma):
+  id_nulo                       0
+  duplicata_id                  0
+  duplicata_conteudo            0
+  valor_invalido                0
+  timestamp_invalido            0
+  tipo_fora_dominio             0
+  canal_fora_dominio            0
+  categoria_fora_dominio        0
+  status_fora_dominio           0
+  segmento_fora_dominio         0
+  risk_score_invalido           0
+  credit_score_invalido         0
+  cliente_fora_faixa            0
+  rotulo_invalido               0
+
+raw_particionada: 30,000 | bronze: 30,000 | quarentena: 0 | descartadas: 0
+
+-- sinalizações de qualidade mantidas na bronze
+ valor_no_piso_R5  credit_score_300_ou_900  fraude_com_status_aprovado
+              573                     1222                           0
+
+-- cruzamento rótulo x status (checa vazamento)
+ is_fraud   status     n
+    False approved 26948
+    False declined  2301
+     True declined   751
+
+-- consistência do segmento por cliente
+ clientes  clientes_com_mais_de_um_segmento
+     7803                              5887
+
+-- granularidade do timestamp
+ minutos_distintos  segundos_distintos
+                 1                   1
+
+[5] SILVER (enriquecimento)
+bronze: 30,000 | silver: 30,000 (nenhum JOIN com perda — a base já traz segment/credit_score)
+
+-- distribuição periodo_dia
+periodo_dia    n
+  madrugada 7553
+      manha 7514
+      noite 7466
+      tarde 7467
+colunas da silver: 22
+
+-- distribuição faixa_risk_score
+faixa_risk_score     n
+   1_baixo (<60) 17965
+ 2_medio (60-79)  6002
+   3_alto (>=80)  6033
+
+[6] GOLD (agregações)
+  gold_cubo_risco        3,235 linhas | soma de transacoes = 30,000 (deve ser 30,000)
+  gold_serie_diaria      1,460 linhas | soma de transacoes = 30,000 (deve ser 30,000)
+  gold_perfil_horario      168 linhas | soma de transacoes = 30,000 (deve ser 30,000)
+  gold_segmento_score       27 linhas | soma de transacoes = 30,000 (deve ser 30,000)
+
+-- conferência da gold por segmento
+  segment  transacoes  fraudes  taxa_fraude_pct  valor_fraude
+High-Risk        2915      282             9.67      42156.04
+ Standard       10645      312             2.93      50874.90
+  Premium       16440      157             0.95      26336.99
+
+==============================================================================
+RESUMO DO FUNIL DE LINHAS
+  arquivo CSV ............ 30,000
+  raw .................... 30,000  (rejeitadas pelo schema: 0)
+  raw_particionada ....... 30,000  em 12 partições
+  bronze ................. 30,000  (quarentena: 0)
+  silver ................. 30,000
+  gold ................... 4 tabelas
+Arquivos gerados:
+  raw                    1 arquivo(s)      2,678 KB
+  raw_particionada      12 arquivo(s)        743 KB
+  bronze/transactions   12 arquivo(s)        789 KB
+  bronze/quarentena      1 arquivo(s)          0 KB
+  silver                12 arquivo(s)        898 KB
+  gold                   4 arquivo(s)         67 KB
+==============================================================================

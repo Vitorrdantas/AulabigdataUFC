@@ -1,0 +1,2 @@
+transacoes,fraudes,taxa_fraude_pct,valor_total,valor_fraude,pct_valor_fraudado,ticket_medio_fraude,ticket_medio_geral,recusadas,recusas_legitimas,pct_recusas_que_eram_legitimas,pct_legitimas_recusadas
+30000,751,2.5,5207843.5,119367.93,2.29,158.95,173.59,3052,2301,75.4,7.87

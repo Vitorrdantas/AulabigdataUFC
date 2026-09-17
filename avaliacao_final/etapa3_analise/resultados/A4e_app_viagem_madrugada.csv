@@ -1,0 +1,5 @@
+app_viagem,madrugada,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+False,False,21523,71.7,434,57.8,2.02,0.81,68618.48
+False,True,7240,24.1,218,29.0,3.01,1.2,35170.78
+True,False,924,3.1,70,9.3,7.58,3.03,12373.83
+True,True,313,1.0,29,3.9,9.27,3.7,3204.84

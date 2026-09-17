@@ -1,0 +1,18 @@
+Linhas no CSV de teste: 30,012 (30,000 oficiais + 12 sujas)
+Bronze: 30,001 linhas | quarentena: 10 linhas
+
+linha injetada  esperado                                obtido
+5753            duplicata_id                            duplicata_id;duplicata_conteudo (só a cópia; a original ficou)
+900002          duplicata_conteudo                      duplicata_conteudo
+900003          valor_invalido                          valor_invalido
+900004          valor_invalido                          valor_invalido
+900005          risk_score_invalido                     risk_score_invalido
+900006          credit_score_invalido                   credit_score_invalido
+900007          timestamp_invalido                      timestamp_invalido
+900008          canal_fora_dominio                      canal_fora_dominio
+900009          rotulo_invalido                         rotulo_invalido
+900010          cliente_fora_faixa                      cliente_fora_faixa
+900011          ACEITA (normalizada p/ app / viagem)    na bronze como ('app', 'viagem')
+900012          rejeitada no schema da raw              fora da raw (reject_errors)
+
+Esperado na bronze: 30,000 oficiais + 1 normalizada = 30,001 -> obtido 30,001

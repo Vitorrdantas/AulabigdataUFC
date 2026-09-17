@@ -1,0 +1,13 @@
+segment,channel,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+High-Risk,app,1176,3.9,162,21.6,13.78,5.5,22917.1
+High-Risk,web,860,2.9,64,8.5,7.44,2.97,9607.73
+High-Risk,atm,273,0.9,20,2.7,7.33,2.93,4016.06
+High-Risk,pos,606,2.0,36,4.8,5.94,2.37,5615.15
+Standard,app,4296,14.3,195,26.0,4.54,1.81,27890.56
+Standard,atm,1019,3.4,23,3.1,2.26,0.9,4822.87
+Standard,web,3258,10.9,60,8.0,1.84,0.74,14740.54
+Standard,pos,2072,6.9,34,4.5,1.64,0.66,3420.93
+Premium,app,6549,21.8,98,13.0,1.5,0.6,13102.25
+Premium,web,4886,16.3,33,4.4,0.68,0.27,7230.95
+Premium,atm,1715,5.7,11,1.5,0.64,0.26,3556.37
+Premium,pos,3290,11.0,15,2.0,0.46,0.18,2447.42

@@ -1,0 +1,4 @@
+fatia,transacoes_revisadas,fraudes_modelo,recall_modelo_pct,precisao_modelo_pct,fraudes_risk_score,recall_risk_score_pct,precisao_risk_score_pct
+0.0500,298,36,24.1611,12.0805,12,8.0537,4.0268
+0.1000,597,58,38.9262,9.7152,29,19.4631,4.8576
+0.2000,1194,82,55.0336,6.8677,40,26.8456,3.3501

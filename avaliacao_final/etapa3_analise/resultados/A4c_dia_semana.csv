@@ -1,0 +1,8 @@
+dia_semana_num,dia_semana,transacoes,fraudes,taxa_fraude_pct
+1,seg,4350,101,2.32
+2,ter,4207,104,2.47
+3,qua,4355,107,2.46
+4,qui,4293,116,2.7
+5,sex,4248,102,2.4
+6,sab,4319,105,2.43
+7,dom,4228,116,2.74

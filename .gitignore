@@ -1,0 +1,24 @@
+# datasets e camadas geradas pelo pipeline (reproduzíveis com os scripts)
+*.csv
+*.parquet
+bigdata/
+bigdata_aval/
+bigdata_teste/
+!avaliacao_final/etapa3_analise/resultados/*.csv
+!avaliacao_final/etapa4_ml/resultados/*.csv
+
+# metastore local do Hive
+metastore_db/
+derby.log
+
+# Spark
+spark-warehouse/
+
+# cache Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ambientes virtuais
+venv/
+bigdata-env/

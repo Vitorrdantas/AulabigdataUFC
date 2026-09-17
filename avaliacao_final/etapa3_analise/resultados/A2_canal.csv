@@ -1,0 +1,5 @@
+channel,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+app,12021,40.1,455,60.6,3.79,1.51,63909.91
+atm,3007,10.0,54,7.2,1.8,0.72,12395.3
+web,9004,30.0,157,20.9,1.74,0.7,31579.22
+pos,5968,19.9,85,11.3,1.42,0.57,11483.5

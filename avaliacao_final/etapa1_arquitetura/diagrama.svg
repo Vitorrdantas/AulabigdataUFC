@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1000" viewBox="0 0 1700 1000">
+<defs>
+<marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#1F4E8C"/></marker>
+<marker id="setaG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/></marker>
+<marker id="setaV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#1E5631"/></marker>
+</defs>
+<rect width="1700" height="1000" fill="#FFFFFF"/>
+<rect x="0" y="0" width="1700" height="70" fill="#0B2E59"/>
+<text x="30" y="44" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="start">TechPay — arquitetura de dados para risco de fraude</text>
+<text x="1670" y="34" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="13.5" fill="#FFFFFF" font-weight="normal" text-anchor="end">Batch diário (D-1), arquitetura Medallion</text>
+<text x="1670" y="54" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="13.5" fill="#F3E3B5" font-weight="normal" text-anchor="end">Rota A: cluster Hadoop   |   Rota B (executada): DuckDB + PySpark local + Plotly</text>
+<rect x="20" y="90" width="230" height="660" rx="8" fill="#F3F6FA"/>
+<text x="135.0" y="116" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15.5" fill="#0B2E59" font-weight="bold" text-anchor="middle">1. Origem</text>
+<rect x="270" y="90" width="230" height="660" rx="8" fill="#F3F6FA"/>
+<text x="385.0" y="116" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15.5" fill="#0B2E59" font-weight="bold" text-anchor="middle">2. Ingestão</text>
+<rect x="520" y="90" width="230" height="660" rx="8" fill="#F3F6FA"/>
+<text x="635.0" y="116" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15.5" fill="#0B2E59" font-weight="bold" text-anchor="middle">3. Armazenamento bruto</text>
+<rect x="770" y="90" width="520" height="660" rx="8" fill="#F3F6FA"/>
+<text x="1030.0" y="116" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15.5" fill="#0B2E59" font-weight="bold" text-anchor="middle">4. Processamento (Medallion)</text>
+<rect x="1310" y="90" width="370" height="660" rx="8" fill="#F3F6FA"/>
+<text x="1495.0" y="116" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15.5" fill="#0B2E59" font-weight="bold" text-anchor="middle">5. Serving e BI</text>
+<rect x="35" y="140" width="200" height="190" rx="6" fill="#E7EDF5" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="47" y="164" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Canais TechPay</text>
+<text x="47" y="186" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">App (40% do volume)</text>
+<text x="47" y="204" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Web (30%)</text>
+<text x="47" y="222" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">POS (20%)</text>
+<text x="47" y="240" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">ATM (10%)</text>
+<text x="47" y="258" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">eventos de transação</text>
+<rect x="35" y="370" width="200" height="170" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="47" y="394" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Banco transacional</text>
+<text x="47" y="416" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">OLTP (MySQL)</text>
+<text x="47" y="434" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">tabela de transações</text>
+<text x="47" y="452" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">+ cadastro do cliente</text>
+<text x="47" y="470" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">  (segmento, score)</text>
+<text x="47" y="488" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">fonte de verdade</text>
+<line x1="135" y1="330" x2="135" y2="368" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<text x="143.0" y="353.0" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#4A5767" font-weight="normal" text-anchor="start">grava</text>
+<rect x="35" y="580" width="200" height="140" rx="6" fill="#F6EFD9" stroke="#B8860B" stroke-width="1.8"/>
+<text x="47" y="604" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Rótulo de fraude</text>
+<text x="47" y="626" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">chargeback / análise</text>
+<text x="47" y="644" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">do time de risco</text>
+<text x="47" y="662" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">chega com atraso</text>
+<text x="47" y="680" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">(dias ou semanas)</text>
+<line x1="135" y1="578" x2="135" y2="542" stroke="#B8860B" stroke-width="2.2" marker-end="url(#setaG)"/>
+<text x="143.0" y="564.0" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#4A5767" font-weight="normal" text-anchor="start">atualiza is_fraud</text>
+<rect x="285" y="300" width="200" height="250" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="297" y="324" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Sqoop (batch diário)</text>
+<text x="297" y="346" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">import JDBC do MySQL</text>
+<text x="297" y="364" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">modo incremental por</text>
+<text x="297" y="382" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">timestamp (lastmodified)</text>
+<text x="297" y="400" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">4 mappers em paralelo</text>
+<text x="297" y="418" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start"></text>
+<text x="297" y="436" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota B: cópia do CSV</text>
+<text x="297" y="454" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">+ checksum MD5</text>
+<text x="297" y="472" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">+ contagem de linhas</text>
+<rect x="437" y="522" width="40" height="20" rx="10" fill="#B8860B"/>
+<text x="457.0" y="536" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">CSV</text>
+<line x1="237" y1="450" x2="283" y2="450" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<text x="260.0" y="442.0" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#4A5767" font-weight="normal" text-anchor="middle">D-1</text>
+<rect x="535" y="300" width="200" height="250" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="547" y="324" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Landing / raw</text>
+<text x="547" y="346" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">HDFS /raw/transactions/</text>
+<text x="547" y="364" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">replicação 3×</text>
+<text x="547" y="382" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">arquivo imutável, como</text>
+<text x="547" y="400" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">chegou da origem</text>
+<text x="547" y="418" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start"></text>
+<text x="547" y="436" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota B:</text>
+<text x="547" y="454" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">bigdata_aval/raw/</text>
+<text x="547" y="472" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">permite reprocessar tudo</text>
+<rect x="687" y="522" width="40" height="20" rx="10" fill="#B8860B"/>
+<text x="707.0" y="536" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">CSV</text>
+<line x1="487" y1="425" x2="533" y2="425" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<rect x="790" y="130" width="230" height="120" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="802" y="154" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Raw particionada</text>
+<text x="802" y="176" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">tabela com schema explícito</text>
+<text x="802" y="194" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">is_fraud mantido como texto</text>
+<text x="802" y="212" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">rejeitadas: reject_errors</text>
+<rect x="836" y="222" width="176" height="20" rx="10" fill="#B8860B"/>
+<text x="924.0" y="236" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Parquet · year/month</text>
+<rect x="790" y="285" width="230" height="135" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="802" y="309" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Bronze</text>
+<text x="802" y="331" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Hive / DuckDB</text>
+<text x="802" y="349" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">tipos, domínios, faixas</text>
+<text x="802" y="367" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">duplicata por id e conteúdo</text>
+<text x="802" y="385" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">reprovadas → quarentena</text>
+<rect x="836" y="392" width="176" height="20" rx="10" fill="#B8860B"/>
+<text x="924.0" y="406" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Parquet · year/month</text>
+<rect x="790" y="455" width="230" height="135" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="802" y="479" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Silver</text>
+<text x="802" y="501" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Hive / DuckDB</text>
+<text x="802" y="519" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">hora, período, dia da semana</text>
+<text x="802" y="537" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">faixas de valor e score</text>
+<text x="802" y="555" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">canal × categoria, contexto</text>
+<rect x="836" y="562" width="176" height="20" rx="10" fill="#B8860B"/>
+<text x="924.0" y="576" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Parquet · year/month</text>
+<rect x="790" y="625" width="230" height="110" rx="6" fill="#E7EDF5" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="802" y="649" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Gold</text>
+<text x="802" y="671" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Hive / DuckDB</text>
+<text x="802" y="689" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">4 tabelas agregadas (contagens)</text>
+<rect x="940" y="707" width="72" height="20" rx="10" fill="#B8860B"/>
+<text x="976.0" y="721" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Parquet</text>
+<line x1="737" y1="330" x2="788" y2="190" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<line x1="905" y1="250" x2="905" y2="283" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<line x1="905" y1="420" x2="905" y2="453" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<line x1="905" y1="590" x2="905" y2="623" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<rect x="1045" y="285" width="230" height="135" rx="6" fill="#F6EFD9" stroke="#B8860B" stroke-width="1.8"/>
+<text x="1057" y="309" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Quarentena</text>
+<text x="1057" y="331" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">linhas reprovadas + motivo</text>
+<text x="1057" y="349" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">revisão pelo dono da origem</text>
+<text x="1057" y="367" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">não somem em silêncio</text>
+<line x1="1022" y1="352" x2="1043" y2="352" stroke="#B8860B" stroke-width="2.2" marker-end="url(#setaG)"/>
+<rect x="1045" y="455" width="230" height="135" rx="6" fill="#E3EFE6" stroke="#1E5631" stroke-width="1.8"/>
+<text x="1057" y="479" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#1E5631" font-weight="bold" text-anchor="start">Spark (PySpark)</text>
+<text x="1057" y="501" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">EDA interativa em memória</text>
+<text x="1057" y="519" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Regressão Logística</text>
+<text x="1057" y="537" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">lê a Silver</text>
+<line x1="1022" y1="522" x2="1043" y2="522" stroke="#1E5631" stroke-width="2.2" marker-end="url(#setaV)"/>
+<rect x="1045" y="625" width="230" height="110" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="1057" y="649" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Gold · tabelas</text>
+<text x="1057" y="671" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">cubo_risco</text>
+<text x="1057" y="689" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">serie_diaria</text>
+<text x="1057" y="707" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">perfil_horario</text>
+<text x="1057" y="725" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">segmento_score</text>
+<line x1="1022" y1="680" x2="1043" y2="680" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<rect x="1045" y="130" width="230" height="120" rx="6" fill="#F6EFD9" stroke="#B8860B" stroke-width="1.8"/>
+<text x="1057" y="154" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Particionamento</text>
+<text x="1057" y="176" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">colunas: year / month</text>
+<text x="1057" y="194" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">12 partições por ano</text>
+<text x="1057" y="212" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">filtro por mês lê 1/12</text>
+<text x="1057" y="230" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">Gold pequena: sem partição</text>
+<rect x="1325" y="130" width="340" height="150" rx="6" fill="#FFFFFF" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="1337" y="154" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Export da Gold (Lab 9)</text>
+<text x="1337" y="176" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota A: Sqoop export → MySQL de BI</text>
+<text x="1337" y="194" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota B: leitura direta dos Parquet</text>
+<text x="1337" y="212" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">somente agregados saem do lake</text>
+<text x="1337" y="230" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">taxas recalculadas no BI</text>
+<rect x="1481" y="252" width="176" height="20" rx="10" fill="#B8860B"/>
+<text x="1569.0" y="266" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="bold" text-anchor="middle">Parquet → tabela SQL</text>
+<rect x="1325" y="320" width="340" height="150" rx="6" fill="#E7EDF5" stroke="#0B2E59" stroke-width="1.8"/>
+<text x="1337" y="344" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#0B2E59" font-weight="bold" text-anchor="start">Dashboard de risco</text>
+<text x="1337" y="366" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota A: Metabase</text>
+<text x="1337" y="384" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Rota B: HTML Plotly (offline)</text>
+<text x="1337" y="402" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">KPIs, tendência, composição,</text>
+<text x="1337" y="420" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">detalhe e curva de captura</text>
+<rect x="1325" y="510" width="340" height="105" rx="6" fill="#E3EFE6" stroke="#1E5631" stroke-width="1.8"/>
+<text x="1337" y="534" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#1E5631" font-weight="bold" text-anchor="start">Score de fraude (bônus)</text>
+<text x="1337" y="556" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">probabilidade por transação</text>
+<text x="1337" y="574" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">modelo lido da Silver via Spark</text>
+<rect x="1325" y="650" width="340" height="90" rx="6" fill="#F6EFD9" stroke="#B8860B" stroke-width="1.8"/>
+<text x="1337" y="674" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Decisão</text>
+<text x="1337" y="696" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">comitê de risco, reunião semanal</text>
+<text x="1337" y="714" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">regras de autenticação extra</text>
+<line x1="1277" y1="680" x2="1323" y2="205" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<line x1="1495" y1="280" x2="1495" y2="318" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<line x1="1277" y1="522" x2="1323" y2="560" stroke="#1E5631" stroke-width="2.2" marker-end="url(#setaV)"/>
+<line x1="1495" y1="470" x2="1495" y2="508" stroke="#1F4E8C" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#seta)"/>
+<line x1="1495" y1="615" x2="1495" y2="648" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<path d="M 1325 395 C 1300 400, 1300 690, 1323 695" fill="none" stroke="#1F4E8C" stroke-width="2.2" marker-end="url(#seta)"/>
+<rect x="20" y="775" width="1660" height="200" rx="8" fill="#FFFFFF" stroke="#B8860B" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="40" y="803" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#B8860B" font-weight="bold" text-anchor="start">Se a TechPay pedir detecção em tempo real (pergunta 4 da justificativa): caminho adicional, o batch acima continua para BI e retreino</text>
+<rect x="40" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="52" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Eventos no autorizador</text>
+<text x="52" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">cada transação publicada</text>
+<text x="52" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">no momento da compra</text>
+<line x1="272" y1="872" x2="312" y2="872" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#setaG)"/>
+<rect x="314" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="326" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Kafka</text>
+<text x="326" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">tópico transacoes</text>
+<text x="326" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">retenção e replay</text>
+<line x1="546" y1="872" x2="586" y2="872" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#setaG)"/>
+<rect x="588" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="600" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Spark Structured Streaming</text>
+<text x="600" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">janelas de 1 a 10 min</text>
+<text x="600" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">features do cliente</text>
+<line x1="820" y1="872" x2="860" y2="872" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#setaG)"/>
+<rect x="862" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="874" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Feature store online</text>
+<text x="874" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">Redis / HBase</text>
+<text x="874" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">contagens recentes</text>
+<line x1="1094" y1="872" x2="1134" y2="872" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#setaG)"/>
+<rect x="1136" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="1148" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">API de scoring</text>
+<text x="1148" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">modelo da Gold/Silver</text>
+<text x="1148" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">resposta &lt; 100 ms</text>
+<line x1="1368" y1="872" x2="1408" y2="872" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#setaG)"/>
+<rect x="1410" y="825" width="230" height="95" rx="6" fill="#FFFFFF" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="1422" y="849" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="15" fill="#16212E" font-weight="bold" text-anchor="start">Decisão na hora</text>
+<text x="1422" y="871" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">aprovar, pedir 2º fator</text>
+<text x="1422" y="889" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#16212E" font-weight="normal" text-anchor="start">ou negar</text>
+<text x="40" y="950" font-family="DejaVu Sans, Segoe UI, Arial, sans-serif" font-size="12.5" fill="#4A5767" font-weight="normal" text-anchor="start" font-style="italic">Os eventos também caem no HDFS (camada raw) para manter o histórico e retreinar o modelo em batch.</text>
+</svg>

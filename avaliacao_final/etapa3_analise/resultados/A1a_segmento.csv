@@ -1,0 +1,4 @@
+segment,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+High-Risk,2915,9.7,282,37.5,9.67,3.86,42156.04
+Standard,10645,35.5,312,41.5,2.93,1.17,50874.9
+Premium,16440,54.8,157,20.9,0.95,0.38,26336.99

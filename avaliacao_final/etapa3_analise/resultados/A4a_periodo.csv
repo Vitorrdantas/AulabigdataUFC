@@ -1,0 +1,5 @@
+periodo_dia,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+madrugada,7553,25.2,247,32.9,3.27,1.31,38375.62
+manha,7514,25.0,172,22.9,2.29,0.91,28718.18
+noite,7466,24.9,170,22.6,2.28,0.91,25348.48
+tarde,7467,24.9,162,21.6,2.17,0.87,26925.65

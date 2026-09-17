@@ -1,0 +1,7 @@
+regra,alertas,pct_volume_alertado,fraudes_capturadas,pct_fraudes_capturadas,precisao_pct,legitimas_incomodadas
+R1 · risk_score >= 80 (motor atual),6033,20.1,200,26.6,3.32,5833
+R2 · app + viagem,1237,4.1,99,13.2,8.0,1138
+R3 · High-Risk no app,1176,3.9,162,21.6,13.78,1014
+R4 · todo High-Risk,2915,9.7,282,37.5,9.67,2633
+R5 · High-Risk OU app+viagem,4024,13.4,349,46.5,8.67,3675
+R6 · High-Risk OU app+viagem OU app na madrugada,6501,21.7,426,56.7,6.55,6075

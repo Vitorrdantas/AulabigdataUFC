@@ -1,0 +1,9 @@
+duckdb>=1.1
+pandas>=2.0
+tabulate
+scikit-learn
+scipy
+plotly>=5.0
+pyspark>=3.5
+matplotlib
+cairosvg        # só para redesenhar o diagrama da Etapa 1

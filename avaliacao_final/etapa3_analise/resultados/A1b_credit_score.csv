@@ -1,0 +1,4 @@
+faixa_credit_score,transacoes,pct_volume,fraudes,pct_fraudes,taxa_fraude_pct,lift,valor_fraude
+1_baixo (300-499),4718,15.7,93,12.4,1.97,0.79,11918.45
+2_medio (500-699),15252,50.8,377,50.2,2.47,0.99,62807.26
+3_alto (700-900),10030,33.4,281,37.4,2.8,1.12,44642.22
